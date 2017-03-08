@@ -1,18 +1,18 @@
 import React from 'react';
 import { merge } from 'glamor';
 import { Button } from '../button/button';
-import { 
-	alpha, 
-	alphaSmall, 
-	alpha__borders, 
-	alpha__borderTB, 
-	alpha__borderRL, 
+import {
+	alpha,
+	alphaSmall,
+	alpha__borders,
+	alpha__borderTB,
+	alpha__borderRL,
 	alpha__borderTop,
 	alpha__borderRight,
 	alpha__borderBottom,
-	alpha__borderLeft, 
-	copy, 
-	borderTraceAnim 
+	alpha__borderLeft,
+	copy,
+	borderTraceAnim
 } from '../../style/components/type';
 import { TimelineLite, Elastic, Power0 } from 'gsap';
 import { uniqueId as loUniqueId } from 'lodash';
@@ -36,9 +36,9 @@ export class HighlightSlide extends React.Component {
 		if (PLAY_ANIMATION) {
 			const TL = new TimelineLite();
 			TL.staggerFrom('#intro-headline span', 0.8, {
-					delay: 1, 
-				y: "-40%", 
-				opacity: 0, 
+					delay: 1,
+				y: "-40%",
+				opacity: 0,
 				ease: Elastic.easeOut.config(1, 0.5)
 				}, 0.05)
 				.from('.alpha__borders > span:nth-child(1)', 0.4, {
@@ -58,8 +58,8 @@ export class HighlightSlide extends React.Component {
 					ease: Power0.easeNone
 				}, '-=0')
 				.staggerFrom(`#body-${this.bodyUniqueId} > div`, 0.8, {
-					y: "-30%", 
-					opacity: 0, 
+					y: "-30%",
+					opacity: 0,
 					ease: Elastic.easeOut.config(1, 0.9)
 				}, 0.2, "-=0.5")
 
@@ -76,7 +76,7 @@ export class HighlightSlide extends React.Component {
 			<div>
 				<h1 {...merge(typeClass, traceAnim)}>
 					{
-						this.props.secondaryContent ? 
+						this.props.secondaryContent ?
 							<span>
 								<span id="intro-headline">
 									{spanSplit(this.props.primaryContent)}
@@ -108,13 +108,13 @@ export class HighlightSlide extends React.Component {
 						</div>
 					</div>
 					<div>
-						{this.props.buttonText ? 
+						{this.props.buttonText &&
 							<Button
 								onClick={ () => this.props.advance(false) }
 							>
-								Take the Quiz!
-							</Button> 
-						: null}
+								{this.props.buttonText}
+							</Button>
+						}
 					</div>
 				</div>
 			</div>

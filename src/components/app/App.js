@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { css } from 'glamor';
 
 import { Header } from '../header/header';
-import { Footer } from '../footer/footer';
 import { Slides } from '../slides/slides';
 import { Confetti } from '../confetti/confetti';
+
 
 const vignette = css({
 	position: "fixed",
@@ -57,12 +57,11 @@ class App extends Component {
 					onSuccess={this.startConfetti}
 				/>
 
-				<Confetti 
+				<Confetti
 					shoot={this.state.fireConfetti}
 				/>
 
-				<Footer/>
-				<div className={ vignette }></div>
+				<div className={ vignette } />
 			</div>
 		);
 	}

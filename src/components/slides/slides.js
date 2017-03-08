@@ -4,6 +4,7 @@ import { Slide } from './slide';
 import { HighlightSlide } from './highlight-slide';
 import { FinalSlide } from './final-slide';
 import { questions } from '../../questions.js'
+import * as slideContents from '../../content';
 
 const slides = css({
 	label: "slides",
@@ -28,59 +29,52 @@ export class Slides extends Component {
 		super(props);
 		this.state = {
 			slide: 0,
-			yeps: 0,
-			nopes: 0,
 		};
 		this.advance = this.advance.bind(this);
-		this.generateQuestions = this.generateQuestions.bind(this);
 	}
 
 	shouldComponentUpdate() {
 		return true;
 	}
 
-	advance(yep) {
+	advance() {
 		if (this.state.slide === 0) {
 			this.props.makeHeaderVisible();
 		}
-		if (this.state.slide < questions.length + 1) {
+
+		if (this.state.slide < Object.keys(slideContents).length + 1) {
 			const nextSlide = this.state.slide + 1;
-			const translation = -(100 / ((questions.length+2) / nextSlide));
+			const translation = -(100 / ((Object.keys(slideContents).length+2) / nextSlide));
 			slides__translation = css({
 				transform: `translateY(${translation}%)`
 			});
 
-			const newState = {
-				slide: nextSlide,
-				yeps: yep ? this.state.yeps + 1 : this.state.yeps,
-				nopes: yep ? this.state.nopes : this.state.nopes + 1,
-			};
-			this.setState(newState);
+
+			this.setState({slide: nextSlide});
 		}
-		if (this.state.slide === questions.length - 1) {
+
+		if (this.state.slide === Object.keys(slideContents).length - 1) {
 			console.log('final question');
 		}
-		if (this.state.slide === questions.length) {
+
+		if (this.state.slide === Object.keys(slideContents).length) {
 			console.log('final slide');
 		}
 	}
 
-	generateQuestions() {
-		const self = this;
-		let questionSlides = [];
-		questions.forEach(function(question, index) {
-			questionSlides.push(
-				<Slide
-					advance={ self.advance }
-					title={`# ${index + 1}`}
-					question={question.question}
-					key={index}
-				>
-				</Slide>
-			)
-		});
 
-		return questionSlides;
+	generateQuestions() {
+		return Object.keys(slideContents).map(function(key, index){
+			return (
+				<Slide
+					advance={ this.advance }
+					title={`# ${index + 1}`}
+					key={index}
+					slide={slideContents[key]}
+					slideCount={index + 1}
+				/>
+			)
+		}.bind(this))
 	}
 
 	render() {
@@ -92,10 +86,10 @@ export class Slides extends Component {
 				>
 					<HighlightSlide
 						advance={this.advance}
-						primaryContent={'Am I a Real'}
-						secondaryContent={'Developer?'}
-						copy={`Ever wonder if you're a 'real' developer? Maybe you used a tool before or wrote code that wasn't 'real' code. Take the quiz and find out.`}
-						buttonText={'Take the Quiz!'}
+						primaryContent={'Presenation'}
+						secondaryContent={'Title'}
+						copy={`some subtext by: Corey Speisman`}
+						buttonText={'Let\'s Go!'}
 					/>
 				</Slide>
 
@@ -104,14 +98,14 @@ export class Slides extends Component {
 				<Slide
 					key={"final"}
 					contentSlide={true}
-				>	
+				>
 					<FinalSlide
-						isSuccessful={this.state.yeps > 0}
-						isReady={this.state.slide === questions.length + 1}
+						isSuccessful={true}
+						isReady={this.state.slide === Object.keys(slideContents).length}
 						onSuccess={this.props.onSuccess}
 					/>
 				</Slide>
-					
+
 				</div>
 			</div>
 		);

@@ -41,7 +41,7 @@ export function Header({visible}) {
 		<header { ...merge(header, headerVisible) }>
 			<div className="row">
 				<div className="column small-12 u-text-center">
-					<div {...header__logo}>AIARD?</div>
+					<div {...header__logo}>Presentation Theme</div>
 				</div>
 			</div>
 		</header>

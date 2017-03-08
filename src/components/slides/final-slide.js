@@ -1,10 +1,10 @@
 import React from 'react';
 import { css } from 'glamor';
 import { Button } from '../button/button';
-import { 
-	alphaSmall, 
-	gamma, 
-	copy, 
+import {
+	alphaSmall,
+	gamma,
+	copy,
 } from '../../style/components/type';
 import { TimelineLite, Elastic } from 'gsap';
 
@@ -53,14 +53,14 @@ export class FinalSlide extends React.Component {
 			}
 			this.TL = new TimelineLite();
 			this.TL.staggerFrom('#conclusion-headline span', 2, {
-				delay: 1, 
-				y: "-40%", 
-				opacity: 0, 
+				delay: 1,
+				y: "-40%",
+				opacity: 0,
 				ease: Elastic.easeOut.config(1, 0.2)
 			}, 0.05)
 			.staggerFrom(`#final-slide-body > div > div`, 0.8, {
-				y: "-20%", 
-				opacity: 0, 
+				y: "-20%",
+				opacity: 0,
 				ease: Elastic.easeOut.config(1, 0.9)
 			}, 0.1, "-=1.5")
 			this.TL.pause();
@@ -83,22 +83,22 @@ export class FinalSlide extends React.Component {
 				flexDirection: 'row',
 			},
 		});
-		
+
 		return (
-			<div 
+			<div
 				className={`row align-center ${slide__content}`}
 				id="final-slide"
 			>
 				<div className={`column small-12 ${flexVerticalCenter}`}>
 					<h1 {...alphaSmall}>
 						{
-							this.props.isSuccessful ? 
+							this.props.isSuccessful ?
 							<span id="conclusion-headline">
-									{spanSplit('Congrats!')}
+									{spanSplit('The End!')}
 							</span>
-							: 
+							:
 							<span id="conclusion-headline">
-								{spanSplit('No worries!')}
+								{spanSplit('No worrie	s!')}
 							</span>
 						}
 					</h1>
@@ -107,11 +107,7 @@ export class FinalSlide extends React.Component {
 							<div className={'row align-center'}>
 								<div className="column small-12 u-text-center">
 									<p className={ gamma }>
-										{
-											this.props.isSuccessful ? 
-											'Looks like you ARE a real developer!' :
-											"It's ok to not be a developer."
-										}
+										Hope you enjoyed the presenation
 									</p>
 								</div>
 							</div>
@@ -119,7 +115,7 @@ export class FinalSlide extends React.Component {
 								<div className="column small-12 medium-8 large-7 xlarge-6 u-text-left">
 									<p className={ copy }>
 										{
-											this.props.isSuccessful ? 
+											this.props.isSuccessful ?
 											`Don't ever let anybody tell you that you're anything less than you are. Nobody gets to be the arbiter of "realness". No developer gets to be "more" developer than anybody else, no matter what language or tools they use.`  :
 											`Even if you're not a developer, don't let people take you down a peg by defining for you what you know yourself to be. You don't need to "sling code" or whatever if you're not interested. If you're not a developer that's cool.`
 										}
@@ -130,9 +126,9 @@ export class FinalSlide extends React.Component {
 								<div className="column small-12 medium-8 large-7 xlarge-6 u-text-left">
 									<p className={ copy }>
 										{
-											this.props.isSuccessful ? 
-											`Are you a real developer? 💩 yeah.` : 
-											`If you do want to be a developer though, hit the button down thataways 👇 and check out some awesome free resources at Codecademy.com.`									
+											this.props.isSuccessful ?
+											`Are you a real developer? 💩 yeah.` :
+											`If you do want to be a developer though, hit the button down thataways 👇 and check out some awesome free resources at Codecademy.com.`
 										}
 									</p>
 								</div>
@@ -142,7 +138,7 @@ export class FinalSlide extends React.Component {
 									style={{maxWidth: '38rem'}}
 								>
 									{
-										!this.props.isSuccessful ? 
+										!this.props.isSuccessful ?
 										<Button
 											href={"https://codecademy.com"}
 										>
@@ -151,8 +147,8 @@ export class FinalSlide extends React.Component {
 									}
 									<Button
 										href={
-											this.props.isSuccessful ? 
-											makeTweetIntent(`Woo I'm a ✨ certified REAL developer ✨ on ${window.location.origin}`) : 
+											this.props.isSuccessful ?
+											makeTweetIntent(`Woo I'm a ✨ certified REAL developer ✨ on ${window.location.origin}`) :
 											makeTweetIntent(`Check if you're a ✨ certified REAL developer ✨ on ${window.location.origin}.%0A%0AVaccinated too.`)
 										}
 									>

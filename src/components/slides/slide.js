@@ -1,7 +1,6 @@
 import React from 'react';
 import { css, merge } from 'glamor';
 import { beta, copy } from '../../style/components/type';
-import { Button } from '../button/button';
 
 const slides__slide = css({
 	label: "slides__slide",
@@ -18,31 +17,21 @@ const slides__slide = css({
 
 export function Slide({
 	title,
-	question,
 	children,
 	contentSlide,
-	advance
+	advance,
+	slideCount,
+	slide
 }) {
-	const content = children 
-		? 
+
+	const content = children
+		?
 		children
-		: 
-		<div className="row align-center">
+		:
+		<div className="row align-center" onClick={ advance }>
 			<div className="column small-12 large-6">
-				<h2 className={ beta }>{ title }</h2>
-				<p className={ `${copy} u-text-center u-inline-block` }>{ question }</p>
-				<div>
-					<Button
-						onClick={ () => advance(true) }
-					>
-						Yep
-					</Button>
-					<Button
-						onClick={ () => advance(false) }
-					>
-						Nope
-					</Button>
-				</div>
+				<h2 className={ beta }>{ slide.title }</h2>
+				<p className={ `${copy} u-text-center u-inline-block` } dangerouslySetInnerHTML={{__html: slide.__content}} />
 			</div>
 		</div>
 

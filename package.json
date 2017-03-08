@@ -34,6 +34,7 @@
     "http-proxy-middleware": "0.17.2",
     "jest": "17.0.2",
     "json-loader": "0.5.4",
+    "markdown-with-front-matter-loader": "^0.1.0",
     "node-sass": "^4.3.0",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
