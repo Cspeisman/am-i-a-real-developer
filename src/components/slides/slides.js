@@ -33,10 +33,6 @@ export class Slides extends Component {
 		this.advance = this.advance.bind(this);
 	}
 
-	shouldComponentUpdate() {
-		return true;
-	}
-
 	advance() {
 		if (this.state.slide === 0) {
 			this.props.makeHeaderVisible();
@@ -49,16 +45,7 @@ export class Slides extends Component {
 				transform: `translateY(${translation}%)`
 			});
 
-
 			this.setState({slide: nextSlide});
-		}
-
-		if (this.state.slide === Object.keys(slideContents).length - 1) {
-			console.log('final question');
-		}
-
-		if (this.state.slide === Object.keys(slideContents).length) {
-			console.log('final slide');
 		}
 	}
 
