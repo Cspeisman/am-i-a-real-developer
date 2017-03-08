@@ -88,7 +88,7 @@ export class Slides extends Component {
 						advance={this.advance}
 						primaryContent={'Presenation'}
 						secondaryContent={'Title'}
-						copy={`some subtext by: Corey Speisman`}
+						copy={`designed and built by: Eli Fetch`}
 						buttonText={'Let\'s Go!'}
 					/>
 				</Slide>
