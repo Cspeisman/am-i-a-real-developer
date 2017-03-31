@@ -88,7 +88,7 @@ export class Slides extends Component {
 				>
 					<FinalSlide
 						isSuccessful={true}
-						isReady={this.state.slide === Object.keys(slideContents).length}
+						isReady={this.state.slide === Object.keys(slideContents).length + 1}
 						onSuccess={this.props.onSuccess}
 					/>
 				</Slide>
